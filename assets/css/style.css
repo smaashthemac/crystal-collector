@@ -1,0 +1,20 @@
+#crystal1,
+#crystal2,
+#crystal3,
+#crystal4 {
+	width: 275px;
+	height: 350px;
+}
+
+body {
+	color: #BD567B;
+}
+
+p {
+	color: #1F3159;
+	font-size: 18px;
+}
+
+h1 {
+	font-size: 50px;
+}
