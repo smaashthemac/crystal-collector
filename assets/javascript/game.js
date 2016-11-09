@@ -33,7 +33,7 @@ $("#losses").html("<h3>LOSSES: " + losses + "</h3>");
 
 
 // *generates random number for targetNumber between 19 and 120
-var targetNumber = Math.floor((Math.random() * 100) + 1);
+var targetNumber = Math.floor((Math.random() * 120) + 19);
 $("#targetNumber").html("<h3>TARGET NUMBER: " + targetNumber + "</h3>");
 console.log("Random target number value is " + targetNumber);
 
@@ -219,7 +219,7 @@ function restartGame() {
 	// removes game status text
 	$("#gameStatus").text("");	
 	// generates a new random target number
-	targetNumber = Math.floor((Math.random() * 100) + 1);
+	targetNumber = Math.floor((Math.random() * 120) + 19);
 	$("#targetNumber").html("<h3>TARGET NUMBER: " + targetNumber +"</h3>");
 	// resets userNumber to 0
 	userNumber = 0;
