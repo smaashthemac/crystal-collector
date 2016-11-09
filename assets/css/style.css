@@ -22,7 +22,7 @@ body {
 p {
 	color: #2C457D;
 	font-size: 20px;
-	line-height: 1;
+	line-height: .9;
 }
 
 h1 {
@@ -46,6 +46,13 @@ h3 {
 
 img:hover, {
 	cursor: cell;
+}
+
+#targetNumber,
+#yourNumber,
+#wins,
+#losses {
+	margin-top: -15px;
 }
 
 #top,
