@@ -15,6 +15,10 @@ body {
 	/*border: #BD567B solid 10px;*/
 }
 
+#crystals {
+	margin: -20px;
+}
+
 p {
 	color: #2C457D;
 	font-size: 20px;
