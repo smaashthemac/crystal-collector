@@ -1,28 +1,34 @@
-// randomly generated number
-// each crystal (4) represents a number that is hidden (has a value)
-// each time you click it, it adds to your total score
-// the only way to see the value of the crystal is by clicking it
-// match your score to the random number
-// when the match happens, you get a win point
-// when you lose you get a minus point
-// the game restarts and the target number and the crystal value numbers change
-// random number to match is between 19 and 120
-// crystal numbers are between 1 and 12
+// ========== global variables ========== //
 
+// crystal variables
+var crystals = {
+	crystal1:
+	{
+	  name: "Crystal1",
+	  value: 0
+	},
+	crystal2:
+	{
+	  name: "Crystal2",
+	  value: 0
+	},
+	crystal3:
+	{
+	  name: "Crystal3",
+	  value: 0
+	},
+	crystal4:
+	{
+	  name: "Crystal4",
+	  value: 0
+	}
+};
 
-// create variables
-// var crystal1
-// var crystal2
-// var crystal3 
-// var crystal4 
-// var targetNumber 
-var userNumber = 0; 
-// shows user number text in its div
-$("#yourNumber").html("<h3>YOUR NUMBER: " + userNumber + "</h3>");
+// scores
+var userNumber = 0;
+var targetNumber = 0;
 
-// variable for game start begins true; buttons can be clicked
-var gameStart = true;
-
+// wins and losses
 var wins = 0;
 // shows user wins text in its div
 $("#wins").html("<h3>WINS: " + wins + "</h3>");
@@ -31,224 +37,105 @@ var losses = 0;
 // shows user losses text in its div
 $("#losses").html("<h3>LOSSES: " + losses + "</h3>");
 
+// ========== functions ========== //
 
-// *generates random number for targetNumber between 19 and 120
-var targetNumber = Math.floor((Math.random() * 120) + 19);
-$("#targetNumber").html("<h3>TARGET NUMBER: " + targetNumber + "</h3>");
-console.log("Random target number value is " + targetNumber);
+// this function generates random numbers and console them
+var getRandom = function(min, max) {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+};
 
-// generate random number for crystal1 between 1 and 12
-var crystal1 = Math.floor((Math.random() * 12) + 1);
-console.log("Crystal 1 value is " + crystal1);
+// starts and restarts the game
+var startGame = function() {
 
-// generate random number for crystal2 between 1 and 12
-var crystal2 = Math.floor((Math.random() * 12) + 1);
-console.log("Crystal 2 value is " + crystal2);
-
-// generate random number for crystal3 between 1 and 12
-var crystal3 = Math.floor((Math.random() * 12) + 1);
-console.log("Crystal 3 value is " + crystal3);
-
-// generate random number for crystal4 between 1 and 12
-var crystal4 = Math.floor((Math.random() * 12) + 1);
-console.log("Crystal 4 value is " + crystal4);
-
-// // crystal click function
-// function crystalClick () {
-
-// }
-
-// game begins
-function beginGame() {
-if (gameStart === true) {
-	// when crystal1 is clicked, things happen
-	$("#crystal1").on("click", function() {
-		// the value of the crystal is added to the userNumber
-		userNumber = userNumber + crystal1;
-		console.log("User number is " + userNumber);
-		// updates wins counter
-		$("#yourNumber").html("<h3>YOUR NUMBER: " + userNumber + "</h3>");
-			// if the user number is less than the target number, they can continue
-			if (userNumber < targetNumber) {
-				// the gameStart is still true; they can continue playing
-				gameStart = true;
-			// if the user number is equal to the target number, they have won
-			} 
-			else if (userNumber === targetNumber) {
-				// add one point to the win counter
-				wins++;
-				// updates wins counter
-				$("#wins").html("<h3>WINS: " + wins + "</h3>");
-				console.log("Win count is " + wins);
-				// alerts are tacky. this alerts the user to what just happened.
-				$("#gameStatus").html("<h2>PERFECT! CLICK HERE TO TRY AGAIN!</h2>");
-				// game start is now false; the game is over.
-				gameStart = false;
-			// if the user number is greater than the target number
-			} else {
-				// adds one point to the losses counter
-				losses++;
-				$("#losses").html("<h3>LOSSES: " + losses + "</h3>");
-				console.log("Losses count is " + losses);
-				// alerts are tacky. this alerts the user to what just happened.
-				$("#gameStatus").html("<h2>YOU WENT OVER. CLICK HERE TO TRY AGAIN!</h2>");
-				// game start is now false; the game is over.
-				gameStart = false;
-			}
-
-	});
-	// when crystal2 is clicked, things happen
-	$("#crystal2").on("click", function() {
-		// the value of the crystal is added to the userNumber
-		userNumber = userNumber + crystal2;
-		console.log("User number is " + userNumber);
-		// updates wins counter
-		$("#yourNumber").html("<h3>YOUR NUMBER: " + userNumber + "</h3>");
-			// if the user number is less than the target number, they can continue
-			if (userNumber < targetNumber) {
-				// the gameStart is still true; they can continue playing
-				gameStart = true;
-			// if the user number is equal to the target number, they have won
-			} 
-			else if (userNumber === targetNumber) {
-				// add one point to the win counter
-				wins++;
-				// updates wins counter
-				$("#wins").html("<h3>WINS: " + wins + "</h3>");
-				console.log("Win count is " + wins);
-				// alerts are tacky. this alerts the user to what just happened.
-				$("#gameStatus").html("<h2>PERFECT! CLICK HERE TO TRY AGAIN!</h2>");
-				// game start is now false; the game is over.
-				gameStart = false;
-			// if the user number is greater than the target number
-			} else {
-				// adds one point to the losses counter
-				losses++;
-				$("#losses").html("<h3>LOSSES: " + losses + "</h3>");
-				console.log("Losses count is " + losses);
-				// alerts are tacky. this alerts the user to what just happened.
-				$("#gameStatus").html("<h2>YOU WENT OVER. CLICK HERE TO TRY AGAIN!</h2>");
-				// game start is now false; the game is over.
-				gameStart = false;
-			}
-
-	});
-
-	// when crystal3 is clicked, things happen
-	$("#crystal3").on("click", function() {
-		// the value of the crystal is added to the userNumber
-		userNumber = userNumber + crystal3;
-		console.log("User number is " + userNumber);
-		// updates wins counter
-		$("#yourNumber").html("<h3>YOUR NUMBER: " + userNumber + "</h3>");
-			// if the user number is less than the target number, they can continue
-			if (userNumber < targetNumber) {
-				// the gameStart is still true; they can continue playing
-				gameStart = true;
-			// if the user number is equal to the target number, they have won
-			} 
-			else if (userNumber === targetNumber) {
-				// add one point to the win counter
-				wins++;
-				// updates wins counter
-				$("#wins").html("<h3>WINS: " + wins + "</h3>");
-				console.log("Win count is " + wins);
-				// alerts are tacky. this alerts the user to what just happened.
-				$("#gameStatus").html("<h2>PERFECT! CLICK HERE TO TRY AGAIN!</h2>");
-				// game start is now false; the game is over.
-				gameStart = false;
-			// if the user number is greater than the target number
-			} else {
-				// adds one point to the losses counter
-				losses++;
-				$("#losses").html("<h3>LOSSES: " + losses + "</h3>");
-				console.log("Losses count is " + losses);
-				// alerts are tacky. this alerts the user to what just happened.
-				$("#gameStatus").html("<h2>YOU WENT OVER. CLICK HERE TO TRY AGAIN!</h2>");
-				// game start is now false; the game is over.
-				gameStart = false;
-			}
-
-	});
-
-	// when crystal4 is clicked, things happen
-	$("#crystal4").on("click", function() {
-		// the value of the crystal is added to the userNumber
-		userNumber = userNumber + crystal4;
-		console.log("User number is " + userNumber);
-		// updates wins counter
-		$("#yourNumber").html("<h3>YOUR NUMBER: " + userNumber + "</h3>");
-			// if the user number is less than the target number, they can continue
-			if (userNumber < targetNumber) {
-				// the gameStart is still true; they can continue playing
-				gameStart = true;
-			// if the user number is equal to the target number, they have won
-			} 
-			else if (userNumber === targetNumber) {
-				// add one point to the win counter
-				wins++;
-				// updates wins counter
-				$("#wins").html("<h3>WINS: " + wins + "</h3>");
-				console.log("Win count is " + wins);
-				// alerts are tacky. this alerts the user to what just happened.
-				$("#gameStatus").html("<h2>PERFECT! CLICK HERE TO TRY AGAIN!</h2>");
-				// game start is now false; the game is over.
-				gameStart = false;
-			// if the user number is greater than the target number
-			} else {
-				// adds one point to the losses counter
-				losses++;
-				$("#losses").html("<h3>LOSSES: " + losses + "</h3>");
-				console.log("Losses count is " + losses);
-				// alerts are tacky. this alerts the user to what just happened.
-				$("#gameStatus").html("<h2>YOU WENT OVER. CLICK HERE TO TRY AGAIN!</h2>");
-				// game start is now false; the game is over.
-				gameStart = false;
-			}
-
-	});
-
-}
-}
-
-//initialize game on first load
-beginGame(); 
-
-// function to restart game
-function restartGame() {
-	// removes game status text
-	$("#gameStatus").text("");	
-	// generates a new random target number
-	targetNumber = Math.floor((Math.random() * 120) + 19);
-	$("#targetNumber").html("<h3>TARGET NUMBER: " + targetNumber +"</h3>");
-	// resets userNumber to 0
+	// resets the user number
 	userNumber = 0;
+
+	// set a new target score number between 19 and 120
+	targetNumber = getRandom(19, 120);
+
+	// set different values for each of the crystals between 1 and 12
+	crystals.crystal1.value = getRandom(1, 12);
+	crystals.crystal2.value = getRandom(1, 12);
+	crystals.crystal3.value = getRandom(1, 12);
+	crystals.crystal4.value = getRandom(1, 12);
+
+	// change the html to show the user these changes
 	$("#yourNumber").html("<h3>YOUR NUMBER: " + userNumber + "</h3>");
-	console.log("Random target number value is " + targetNumber);
-	// generate random number for crystal1 between 1 and 12
-	crystal1 = Math.floor((Math.random() * 12) + 1);
-	console.log("Crystal 1 value is " + crystal1);
-	// generate random number for crystal2 between 1 and 12
-	crystal2 = Math.floor((Math.random() * 12) + 1);
-	console.log("Crystal 2 value is " + crystal2);
-	// generate random number for crystal3 between 1 and 12
-	crystal3 = Math.floor((Math.random() * 12) + 1);
-	console.log("Crystal 3 value is " + crystal3);
-	// generate random number for crystal4 between 1 and 12
-	crystal4 = Math.floor((Math.random() * 12) + 1);
-	console.log("Crystal 4 value is " + crystal4);
-	// changes game status to true
-	gameStatus = true;
+	$("#targetNumber").html("<h3>TARGET NUMBER: " + targetNumber + "</h3>");
 
-	beginGame();
-}
+	// console log all these stats for ease of debugging
+	console.log("Target score: " + targetNumber);
+	console.log("Crystal 1: " + crystals.crystal1.value + " | Crystal 2: " + crystals.crystal2.value + " | Crystal 3: " + crystals.crystal3.value + " | Crystal 4: " + crystals.crystal4.value);
 
+	// clears gameStatus div
+	$("#gameStatus").empty();
 
-// on click, runs function to reset the game
-$("#gameStatus").on("click", function() {
-		restartGame();
-		
+}; // end startGame function
+
+// check to see if the user won or lost; reset the game
+var checkWin = function() {
+
+	// if the userNumber is greater than the targetNumber, the user has lost
+	if (userNumber > targetNumber) {
+		// adds one point to the losses counter
+		losses ++;
+		// updates html to reflect this
+		$("#losses").html("<h3>LOSSES: " + losses + "</h3>");
+		// also console logs 
+		console.log("Losses count is " + losses);
+		// alerts are tacky. this alerts the user to what just happened.
+		$("#gameStatus").html("<h2>YOU WENT OVER. CLICK HERE TO TRY AGAIN!</h2>");
+	}
+
+	// if the current score is equal to the target, the user has won
+	else if (userNumber === targetNumber) {
+		// adds one point to the wins counter
+		wins ++;
+		// updates html to reflect this
+		$("#wins").html("<h3>WINS: " + wins + "</h3>");
+		// also console logs
+		console.log("Win count is " + wins);
+		// alerts are tacky. this alerts the user to what just happened.
+		$("#gameStatus").html("<h2>PERFECT! CLICK HERE TO TRY AGAIN!</h2>");
+	}
+};
+
+// respond to clicks on the crystals
+var addValues = function(clickedCrystal) {
+
+	// change userNumber
+	userNumber += clickedCrystal.value;
+
+	// change the html to reflect changes in userNumber
+	$("#yourNumber").html("<h3>YOUR NUMBER: " + userNumber + "</h3>");
+
+	// call the checkWin function
+	checkWin();
+
+	// console log the current score
+	console.log("Your Score: " + userNumber);
+};
+
+// =========== initialize game and crystal on click functions ========== //
+
+startGame();
+
+$("#gameStatus").click(function() {
+	startGame();
+})
+
+$("#crystal1").click(function() {
+	addValues(crystals.crystal1);
 });
 
+$("#crystal2").click(function() {
+	addValues(crystals.crystal2);
+});
 
+$("#crystal3").click(function() {
+	addValues(crystals.crystal3);
+});
 
+$("#crystal4").click(function() {
+	addValues(crystals.crystal4);
+});

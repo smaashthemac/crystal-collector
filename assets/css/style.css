@@ -12,7 +12,7 @@ body {
 	color: #BD567B;
 	margin: 70px;
 	text-align: center;
-	/*border: #BD567B solid 10px;*/
+	cursor: cell;
 }
 
 #crystals {
@@ -42,10 +42,6 @@ h3 {
 	font-family: 'Dosis', cursive;
 	font-size: 30px;
 	color: #BD567B;
-}
-
-img:hover, {
-	cursor: cell;
 }
 
 #targetNumber,
